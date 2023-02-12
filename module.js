@@ -1,93 +1,80 @@
-//UI module selects html tags and have the methods to modify the content of html elements:
+//Structure module selects html tags and have the methods to modify the content of html elements:
 
-const UI = (() => {
+const Structure = function () {
 
     //private variables
     //store elements selected by classes
-
-    const productImageElement = document.querySelector(".js-product-image");
-    const productNameElement = document.querySelector(".js-product-name");
-    const productCategoryElement = document.querySelector(".js-product-category");
-    const productDescriptionElement = document.querySelector(".js-product-description");
-    const productPriceElement = document.querySelector(".js-product-price");
-
-    //methods to set the content of the html elements:
-
-    return {
-
-        setProductImage: (src) => {
-            productImageElement.src = src;
-        },
-
-        setProductName: (name) => {
-            productNameElement.textContent = name;
-        },
-
-        setProductCategory: (category) => {
-            productCategoryElement.textContent = category;
-        },
-
-        setProductDescription: (description) => {
-            productDescriptionElement.textContent = description;
-        },
-
-        setProductPrice: (price) => {
-            productPriceElement.textContent = price;
-        }
-
-    }; 
-
+    this.productImageElement = document.querySelector(".js-product-image");
+    this.productNameElement = document.querySelector(".js-product-name");
+    this.productCategoryElement = document.querySelector(".js-product-category");
+    this.productDescriptionElement = document.querySelector(".js-product-description");
+    this.productPriceElement = document.querySelector(".js-product-price");
     
-})(); 
+}; 
+
+Structure.prototype.setProductImage = function (src) {
+    this.productImageElement.src = src;
+};
+
+Structure.prototype.setProductName = function (name) {
+    this.productNameElement.textContent = name;
+};
+
+Structure.prototype.setProductCategory = function (category) {
+    this.productCategoryElement.textContent = category;
+};
+
+Structure.prototype.setProductDescription = function (description) {
+    this.productDescriptionElement.textContent = description;
+};
+
+Structure.prototype.setProductPrice = function (price) {
+    this.productPriceElement.textContent = price;
+};
 
 //Product objects which property values are the html element contents and methodes to return them:
 
-const Product = (() => {
+const Content = function () {
 
     //private variables:
 
-    const img = "images/discatcher.jpg";
-    const name = "DisCatcher Target";
-    const category = "Discgolf";
-    const description = "a chain grid that catches fast and slow putts, heavy and light discs like no other target";
-    const price = 399;
+    this.img = "images/discatcher.jpg";
+    this.name = "DisCatcher Target";
+    this.category = "Discgolf";
+    this.description = "a chain grid that catches fast and slow putts, heavy and light discs like no other target";
+    this.price = 399;
+        
+};
 
-    //public methodes, these are the arguments when calling the setProductX methodes:
+Content.prototype.getImage = function () {
+    return this.img;
+};
 
-    return {
+Content.prototype.getName = function () {
+    return this.name;
+};
 
-        getImage: () => {
-            return img;
-        },
+Content.prototype.getCategory = function () {
+    return this.category;
+};
 
-        getPrice: () => {
-            return price;
-        },
+Content.prototype.getDescription = function () {
+    return `${this.name} is ${this.description}.`;
+},
 
-        getName: () => {
-            return name;
-        },
+Content.prototype.getPrice = function () {
+    return `${this.price}EUR` ;
+}
 
-        getCategory: () => {
-            return category;
-        },
+const DisCatcher = new Content();
 
-        getDescription: () => {
-            return description;
-        },
 
-        getPrice: () => {
-            return price;
-        }
-    }
-})();
+const ShopStructure = new Structure();
 
-//call the setX e.g. setProductName() methodes of UI object, 
-//the parameters are the methods of the Product object 
-//that return the Product object values for the html elements content:
-
-UI.setProductImage(Product.getImage());
-UI.setProductName(Product.getName());
-UI.setProductCategory(Product.getCategory());
-UI.setProductDescription(Product.getDescription());
-UI.setProductPrice(Product.getPrice());
+// A html elemeket módosító setProductX metódusokat meg kell hívni
+// a Product object értékeivel, amik akkor érvényesülnek, ha őket is meghívjuk a getX() metódusokkal.
+ShopStructure.setProductImage(DisCatcher.getImage());
+ShopStructure.setProductName(DisCatcher.getName());
+ShopStructure.setProductCategory(DisCatcher.getCategory());
+ShopStructure.setProductDescription(DisCatcher.getDescription());
+ShopStructure.setProductPrice(DisCatcher.getPrice());
