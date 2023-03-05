@@ -16,7 +16,7 @@
             // and append the new DOM element to the end of the product list
             parentElement.appendChild(this.node);
 
-            // using the selectors above, we store the elements in private variables
+            // using the selectors above, we store the html elements in private variables
             this.productImageElement = this.node.querySelector(this.productImageSelector);
             this.productNameElement = this.node.querySelector(this.productNameSelector);
             this.productCategoryElement = this.node.querySelector(this.productCategorySelector);
@@ -57,7 +57,7 @@
             this.productPriceElement.textContent = price;
         }
 
-        //methods to setu UI
+        //methods to setup UI
 
         setUp (productInfo) {
             this.productImageElement.src = productInfo.image;
@@ -78,6 +78,9 @@
     // Product class for gathering product related info
 
     class Product {
+
+        //receives the productInfo object from script.js
+        //
 
         constructor (productInfo) {
             this.name = productInfo.name;
@@ -106,6 +109,8 @@
         getPrice () {
             return `${this.price} EUR`;
         }
+
+
 
         getInfo () {
             return {
