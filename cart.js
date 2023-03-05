@@ -2,7 +2,7 @@
 
 
     //UI class for user interface
-    class CartUI {    
+    class CartView {    
         constructor (element) {
             this.container = element;
 
@@ -31,9 +31,9 @@
 
 
     //other JS files can also use this class
-    window.CartUI = CartUI;
+    window.CartView = CartView;
 
-    class Cart {
+    class CartModel {
 
         constructor() {
             this.items = [];
@@ -59,7 +59,7 @@
 
 
     //other JS files can also use this class
-    window.Cart = Cart;
+    window.CartModel = CartModel;
 
 
 })();

@@ -1,7 +1,7 @@
 (function () {
 
     //UI class to change user interface
-    class ProductUI {
+    class ProductView {
 
         constructor(templateElement, parentElement) {
             this.productImageSelector = ".js-product-image";
@@ -73,11 +73,11 @@
     };
 
     //tis way the other JS files can also use this class
-    window.ProductUI = ProductUI;
+    window.ProductView = ProductView;
 
     // Product class for gathering product related info
 
-    class Product {
+    class ProductModel {
 
         //receives the productInfo object from script.js
         //
@@ -124,6 +124,6 @@
         
     };
 
-    window.Product = Product;
+    window.ProductModel = ProductModel;
 
 })();
